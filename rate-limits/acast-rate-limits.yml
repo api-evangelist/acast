@@ -1,0 +1,53 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Acast
+providerId: acast
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Podcasting
+- Publishing
+- Rate Limiting
+- Quotas
+description: >-
+  The Acast Publishing API documents a single published rate limit of 60
+  requests per minute. Beyond the request-rate cap, episode creation is bounded
+  by a maximum audio file size of 150 MB (MP3 recommended at 128 kbps). API keys
+  are scoped to a user and only reach the shows assigned to that user, which
+  further bounds the data any single key can act on.
+notes: >-
+  60 requests/minute is the only numeric request-rate limit Acast publishes.
+  Per-account or per-endpoint burst behavior and throttling response codes are
+  not documented in detail; assume standard 429 handling. Verify against the
+  live developer portal during reconciliation.
+sources:
+- https://developers.acast.com/
+- https://learn.acast.com/en/articles/5790019-acast-publishing-api
+responseCodes:
+  throttled: 429
+limits:
+- name: Publishing API Requests
+  scope: user
+  metric: requests
+  limit: 60 per minute
+  notes: The documented rate limit across the Publishing API.
+- name: Episode Audio Upload Size
+  scope: request
+  metric: bytes
+  limit: 150 MB maximum per audio file
+  notes: MP3 format recommended at 128 kbps.
+- name: Show Access Scope
+  scope: user
+  metric: shows
+  limit: shows assigned to the API key's user
+  notes: API keys are user-level; they cannot reach shows not assigned to that user.
+policies:
+- name: Backoff Strategy
+  description: On a 429 response, back off and retry with exponential backoff and jitter, staying under 60 requests per minute.
+- name: User-Scoped Keys
+  description: Keys are issued per user by Acast customer success and are limited to that user's assigned shows.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

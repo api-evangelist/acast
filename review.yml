@@ -1,0 +1,93 @@
+aid: acast
+name: Acast
+review:
+  question: Does Acast expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Acast's documented developer surface is
+    the Publishing API - request/response REST over HTTPS at api.acast.com,
+    authenticated with an X-API-Key header. Acast also offers Webhooks, which
+    push event notifications (for example a new episode publication) by making
+    an HTTP callback to a URL the customer registers. Webhooks are
+    server-to-endpoint HTTP callbacks, not a bidirectional or WebSocket
+    transport, so they were documented as a listed API surface rather than
+    modeled as an AsyncAPI channel. No ws:// or wss:// endpoint is documented on
+    Acast's own API.
+findings:
+  summary: |
+    Acast does not publish a documented public WebSocket API. Acast is a podcast
+    hosting, distribution, and advertising marketplace. Its documented developer
+    interface is the Publishing API (developers.acast.com), a REST API over
+    HTTPS at api.acast.com for managing shows and episodes and placing ad
+    markers. Authentication is an X-API-Key header; keys are issued by Acast
+    customer success and are user-scoped. The API is access-gated to the Ace
+    plan and the Acast Creator Network. Real-time notifications are delivered via
+    Webhooks (HTTP callbacks), not a WebSocket. No realtime, bidirectional, or
+    streaming WebSocket endpoint is documented on Acast's own API.
+  accessModel: |
+    The Publishing API is documented openly but access-gated. An X-API-Key
+    credential must be requested from Acast's customer success team, and API
+    access is only included on the Ace subscription tier or the custom Creator
+    Network agreement (not on the free Starter or the mid Influencer tier). Keys
+    are scoped to a user and reach only the shows assigned to that user.
+  endpointsModeled: |
+    The resources (shows, episodes, ad markers), HTTP methods (GET, POST, PATCH,
+    DELETE), base host (api.acast.com, port 443), authentication header
+    (X-API-Key), and rate limit (60 requests/minute) are confirmed from Acast's
+    public documentation. The exact URL path templates and JSON schemas in the
+    OpenAPI document are MODELED as conventional REST paths because the full
+    reference is served behind an interactive viewer that requires credentials.
+    The OpenAPI carries x-endpointsModeled: true.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.acast.com
+      documented: true
+      note: Publishing API for shows and episodes. X-API-Key header auth, 60 req/min.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: HTTP callbacks pushed to a registered URL on events such as a new episode publication. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Acast's Publishing API as of the review date.
+  operationsConfirmed:
+    - List shows in a network (GET)
+    - Get a specific show (GET)
+    - List episodes for a show (GET)
+    - Get a specific episode (GET)
+    - Create an episode with audio upload up to 150 MB (POST)
+    - Update an episode (PATCH)
+    - Delete an episode (DELETE)
+    - Place or update ad markers on an episode (PATCH)
+    - Receive event notifications via Webhooks (HTTP callback)
+sources:
+  - url: https://developers.acast.com/
+    type: Documentation
+    note: Acast Publishing API developer portal; resources, X-API-Key auth, 60 req/min rate limit. Full reference behind interactive viewer.
+  - url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
+    type: APIReference
+    note: Confirms shows/episodes operations, Ace-plan/Creator-Network gating, key issued by customer success, 150 MB audio limit, ad markers via PATCH.
+  - url: https://learn.acast.com/en/articles/3505461-what-is-a-webhook
+    type: Documentation
+    note: Webhooks deliver event notifications via HTTP callback - not a WebSocket transport.
+  - url: https://www.acast.com/en/pricing
+    type: Pricing
+    note: Plan tiers; API access and Webhooks included on Ace and Creator Network only.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists on Acast's own API. Acast's documented
+    developer interface is request/response REST (the Publishing API) plus
+    outbound HTTP Webhook callbacks. No AsyncAPI document was created because
+    there is no server-push WebSocket/SSE transport on Acast's own API to model;
+    Webhooks are one-way HTTP callbacks and are represented as a listed API
+    surface in apis.yml.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

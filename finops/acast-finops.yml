@@ -1,0 +1,86 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Acast
+providerId: acast
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Podcasting
+- Podcast Hosting
+- Publishing
+- Monetization
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Acast spend. Acast is billed as a flat monthly (or annual)
+  subscription per plan tier rather than metered API usage - the Publishing API
+  itself carries no separate per-call fee. The relevant cost decision for a team
+  wanting API access is the plan gate: the Publishing API and Webhooks are only
+  available on the Ace subscription or the custom Creator Network agreement, so
+  API adoption implies at least the Ace tier's recurring subscription. Acast is
+  also a two-sided marketplace - creators can earn ad and sponsorship revenue
+  that offsets or exceeds the subscription cost - so net cost should be
+  considered alongside monetization income.
+notes: >-
+  Subscription prices are quoted in EUR on the Acast pricing page and vary by
+  region and billing period; the Creator Network tier is custom-priced. There is
+  no usage-based API meter. Verify current amounts during reconciliation.
+sources:
+- https://www.acast.com/en/pricing
+- https://developers.acast.com/
+- https://learn.acast.com/en/articles/5790019-acast-publishing-api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Acast
+serviceCategory: Media and Podcasting
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly or Annual
+  billingCurrency: EUR
+  chargeCategories:
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Acast Publishing API
+  ServiceCategory: Media and Podcasting
+  ProviderName: Acast
+  PublisherName: Acast
+  InvoiceIssuerName: Acast
+  BillingCurrency: EUR
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: subscription_seat
+  description: Flat monthly or annual subscription for the plan tier that unlocks API access (Ace or Creator Network).
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: episode_storage
+  description: Episodes hosted and stored on Acast; included in the subscription, not separately metered.
+  unit: episodes
+  aggregation: sum
+  dimensions:
+  - account
+  - show
+principles:
+- name: Visibility
+  description: Track which plan tier each account holds; API access presence maps directly to being on Ace or the Creator Network.
+- name: Allocation
+  description: Attribute the Ace/Creator Network subscription to the team that depends on the Publishing API and Webhooks.
+- name: Optimization
+  description: Choose annual billing over monthly for a lower effective monthly rate; consolidate shows under one qualifying account rather than paying for multiple tiers.
+- name: Accountability
+  description: Weigh subscription cost against ad and sponsorship revenue earned through the Acast marketplace to assess net spend.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

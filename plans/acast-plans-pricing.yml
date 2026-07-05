@@ -1,0 +1,150 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Acast
+providerId: acast
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Podcasting
+- Podcast Hosting
+- Publishing
+- Monetization
+- Plans
+description: >-
+  Acast sells podcast hosting on tiered subscription plans. A free Starter plan
+  covers basic hosting and distribution. The paid Influencer plan adds
+  multi-show hosting, sponsorships, and monetization tools. The Ace plan is the
+  first tier to include Publishing API access and Webhooks, along with team and
+  network management. The Acast Creator Network is a custom, invite/qualification
+  enterprise tier for established creators that also includes API and Webhook
+  access. Prices shown are from the Acast pricing page and are quoted in EUR;
+  currency and exact amounts vary by region and billing period.
+notes: >-
+  API access is NOT included on Starter or Influencer - only on Ace and the
+  Creator Network. Verify current prices, currency, and feature inclusions on the
+  Acast pricing page during reconciliation. Annual billing is cheaper per month
+  than monthly billing.
+sources:
+- https://www.acast.com/en/pricing
+- https://learn.acast.com/en/articles/5790019-acast-publishing-api
+- https://learn.acast.com/en/articles/9823206-acast-s-free-starter-plan
+plans:
+- id: acast-starter
+  name: Starter
+  type: free
+  description: >-
+    Free plan with unlimited hosting, basic analytics, and distribution to all
+    major listening platforms. Limited to a single show. No API or Webhook
+    access.
+  entries:
+  - label: Hosting
+    name: hosting
+    type: flat
+    metric: shows
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  elements:
+  - name: Unlimited Hosting
+  - name: Basic Analytics
+  - name: Distribution to Major Platforms
+- id: acast-influencer
+  name: Influencer
+  type: paid
+  description: >-
+    For podcasters growing an audience and starting to monetize. Adds multiple
+    shows with unlimited episodes, sponsorship opportunities, exclusive content
+    for supporters, and dynamic intros/outros. No API or Webhook access. 14-day
+    free trial.
+  entries:
+  - label: Subscription (Annual Billing)
+    name: subscription_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 14.99 per month billed annually
+    userMultiplied: false
+  - label: Subscription (Monthly Billing)
+    name: subscription_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 25 per month
+    userMultiplied: false
+  elements:
+  - name: Multiple Shows
+  - name: Unlimited Episodes
+  - name: Sponsorships
+  - name: Dynamic Intros and Outros
+- id: acast-ace
+  name: Ace
+  type: paid
+  description: >-
+    For professional podcasters and networks. Includes everything in Influencer
+    plus team and network management, prioritized multi-language support, and -
+    critically for developers - Publishing API access and Webhooks. 14-day free
+    trial.
+  entries:
+  - label: Subscription (Annual Billing)
+    name: subscription_annual
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 29.99 per month billed annually
+    userMultiplied: false
+  - label: Subscription (Monthly Billing)
+    name: subscription_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 40 per month
+    userMultiplied: false
+  elements:
+  - name: Publishing API Access
+  - name: Webhooks
+  - name: Team and Network Management
+  - name: Prioritized Multi-Language Support
+- id: acast-creator-network
+  name: Acast Creator Network
+  type: enterprise
+  description: >-
+    Custom enterprise tier for established creators with significant audiences,
+    offering premium benefits and services beyond the standard plans. Includes
+    Publishing API access and Webhooks. Requires direct outreach to Acast for
+    qualification and pricing.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Publishing API Access
+  - name: Webhooks
+  - name: Premium Support and Services
+  - name: Custom Terms
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

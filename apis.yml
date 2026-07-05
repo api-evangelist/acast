@@ -1,0 +1,122 @@
+aid: acast
+url: https://raw.githubusercontent.com/api-evangelist/acast/refs/heads/main/apis.yml
+name: Acast
+kind: company
+description: Acast is a podcast hosting, distribution, and advertising marketplace
+  that helps creators publish shows, distribute to every major listening platform,
+  and monetize through dynamic ad insertion and sponsorships. Acast exposes a
+  documented public Publishing API for programmatically managing shows and
+  episodes - listing shows and episodes, fetching details, and creating, updating,
+  and deleting episodes - plus placing ad markers and receiving webhook
+  notifications for events like new episode publications. The API is documented
+  openly at developers.acast.com, but access is gated - an X-API-Key credential is
+  issued by Acast's customer success team to accounts on the Ace plan or in the
+  Acast Creator Network.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Podcasting
+- Podcast Hosting
+- Publishing
+- Advertising
+- Monetization
+- Media
+- Audio
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: acast:acast-shows-api
+  name: Acast Shows API
+  tags:
+  - Shows
+  - Podcasts
+  - Publishing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.acast.com/
+  baseURL: https://api.acast.com
+  properties:
+  - url: https://developers.acast.com/
+    type: Documentation
+  - url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
+    type: APIReference
+  - url: openapi/acast-openapi.yml
+    type: OpenAPI
+  description: List all shows in a network and fetch details for a specific show.
+    Read-only access to show metadata (title, description, artwork, RSS feed, and
+    episode listings) scoped to the shows assigned to the API key's user. Endpoint
+    paths are modeled from the documented resource operations - see the OpenAPI
+    x-endpointsModeled note.
+- aid: acast:acast-episodes-api
+  name: Acast Episodes API
+  tags:
+  - Episodes
+  - Publishing
+  - CMS
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.acast.com/
+  baseURL: https://api.acast.com
+  properties:
+  - url: https://developers.acast.com/
+    type: Documentation
+  - url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
+    type: APIReference
+  - url: openapi/acast-openapi.yml
+    type: OpenAPI
+  description: List episodes for a show, fetch a single episode, and create, update,
+    and delete episodes straight from the command line or an existing CMS. Episode
+    creation accepts an audio file upload (MP3 recommended, up to 150 MB). Endpoint
+    paths are modeled from the documented resource operations - see the OpenAPI
+    x-endpointsModeled note.
+- aid: acast:acast-ad-markers-api
+  name: Acast Ad Markers API
+  tags:
+  - Ad Markers
+  - Monetization
+  - Advertising
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.acast.com/
+  baseURL: https://api.acast.com
+  properties:
+  - url: https://developers.acast.com/
+    type: Documentation
+  - url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
+    type: APIReference
+  - url: openapi/acast-openapi.yml
+    type: OpenAPI
+  description: Place or update ad markers within an episode via PATCH so dynamic ad
+    insertion knows where to stitch pre-roll, mid-roll, and post-roll ads. Note that
+    disabling monetization on a per-episode basis is not currently possible through
+    the API. Endpoint paths are modeled - see the OpenAPI x-endpointsModeled note.
+- aid: acast:acast-webhooks-api
+  name: Acast Webhooks
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://learn.acast.com/en/articles/3505461-what-is-a-webhook
+  baseURL: https://api.acast.com
+  properties:
+  - url: https://learn.acast.com/en/articles/3505461-what-is-a-webhook
+    type: Documentation
+  description: Register HTTP callback URLs to receive real-time notifications when
+    events occur on your account - for example when a new episode is published.
+    Webhooks are server-to-endpoint HTTP callbacks, not a bidirectional or
+    WebSocket transport. Available alongside the Publishing API on the Ace plan and
+    Creator Network.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/acast
+- type: Website
+  url: https://www.acast.com
+- type: Documentation
+  url: https://developers.acast.com/
+- type: Plans
+  url: plans/acast-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/acast-rate-limits.yml
+- type: FinOps
+  url: finops/acast-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
