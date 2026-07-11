@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/acast-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: User-scoped API key issued by Acast customer success to Ace plan and Creator
+    Network accounts. Sent on every request in the X-API-Key header.
+  sources:
+  - openapi/acast-openapi.yml

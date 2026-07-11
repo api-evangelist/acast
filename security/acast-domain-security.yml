@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.acast.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  9 18:02:09 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developers.acast.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 16:04:21 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.acast.com
+  https: false
+domains:
+- domain: acast.com
+  dnssec: false
+  caa:
+  - 0 issue "digicert.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "microsoft.com"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 iodef "mailto:domains@acast.com"
+  - 0 issue "amazon.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
