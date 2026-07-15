@@ -105,6 +105,8 @@ apis:
     WebSocket transport. Available alongside the Publishing API on the Ace plan and
     Creator Network.
 common:
+- type: AgenticAccess
+  url: agentic-access/acast-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/acast-vulnerability-disclosure.yml
 - type: DomainSecurity
