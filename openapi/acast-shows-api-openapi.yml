@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Acast Publishing Ad Markers Shows API
+  description: 'The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS. It also supports placing ad markers on episodes for dynamic ad insertion. The API is documented openly at developers.acast.com but is access-gated: you authenticate with an X-API-Key header, and that key is issued by Acast''s customer success team to accounts on the Ace plan or in the Acast Creator Network. API keys are scoped to a user and grant access only to the shows assigned to that user.
+
+
+    x-endpointsModeled: The resources, HTTP methods, base host, authentication header, and rate limit below are confirmed from Acast''s public documentation (developers.acast.com and the Acast Learning Center). The exact URL path templates and JSON schemas are MODELED as conventional REST paths because Acast''s full reference is served behind an interactive viewer that requires credentials. Verify precise paths and payloads against the live developer portal before relying on them in production.'
+  version: '1.0'
+  contact:
+    name: Acast
+    url: https://developers.acast.com/
+servers:
+- url: https://api.acast.com
+  description: Acast Publishing API
+security:
+- apiKeyAuth: []
+tags:
+- name: Shows
+  description: Read podcast show metadata assigned to the API key's user.
+paths:
+  /shows:
+    get:
+      operationId: listShows
+      tags:
+      - Shows
+      summary: List shows
+      description: Lists all shows in the network that are assigned to the authenticated user. Path modeled; resource and method confirmed from documentation.
+      responses:
+        '200':
+          description: A list of shows.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Show'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /shows/{showId}:
+    parameters:
+    - $ref: '#/components/parameters/ShowId'
+    get:
+      operationId: getShow
+      tags:
+      - Shows
+      summary: Get a show
+      description: Fetches details for a specific show, including its episode listing and RSS feed. Path modeled; resource and method confirmed from documentation.
+      responses:
+        '200':
+          description: The requested show.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Show'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist or is not assigned to this user.
+    Unauthorized:
+      description: Missing or invalid X-API-Key.
+    RateLimited:
+      description: Rate limit exceeded (60 requests/minute).
+  parameters:
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
+  schemas:
+    Show:
+      type: object
+      description: A podcast show hosted on Acast.
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        rssFeedUrl:
+          type: string
+          format: uri
+        imageUrl:
+          type: string
+          format: uri
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: User-scoped API key issued by Acast customer success to Ace plan and Creator Network accounts. Sent on every request in the X-API-Key header.
+x-endpointsModeled: true

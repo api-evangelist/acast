@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Acast Publishing Ad Markers Episodes API
+  description: 'The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS. It also supports placing ad markers on episodes for dynamic ad insertion. The API is documented openly at developers.acast.com but is access-gated: you authenticate with an X-API-Key header, and that key is issued by Acast''s customer success team to accounts on the Ace plan or in the Acast Creator Network. API keys are scoped to a user and grant access only to the shows assigned to that user.
+
+
+    x-endpointsModeled: The resources, HTTP methods, base host, authentication header, and rate limit below are confirmed from Acast''s public documentation (developers.acast.com and the Acast Learning Center). The exact URL path templates and JSON schemas are MODELED as conventional REST paths because Acast''s full reference is served behind an interactive viewer that requires credentials. Verify precise paths and payloads against the live developer portal before relying on them in production.'
+  version: '1.0'
+  contact:
+    name: Acast
+    url: https://developers.acast.com/
+servers:
+- url: https://api.acast.com
+  description: Acast Publishing API
+security:
+- apiKeyAuth: []
+tags:
+- name: Episodes
+  description: Create, read, update, and delete episodes within a show.
+paths:
+  /shows/{showId}/episodes:
+    parameters:
+    - $ref: '#/components/parameters/ShowId'
+    get:
+      operationId: listEpisodes
+      tags:
+      - Episodes
+      summary: List episodes for a show
+      description: Returns a list of all existing episodes for a show, including each episode's ID. Path modeled; resource and method confirmed from documentation.
+      responses:
+        '200':
+          description: A list of episodes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Episode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      operationId: createEpisode
+      tags:
+      - Episodes
+      summary: Create an episode
+      description: Creates a new episode for a show, accepting an audio file upload (MP3 recommended, up to 150 MB) plus episode metadata. Path modeled; resource and method confirmed from documentation.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EpisodeCreate'
+      responses:
+        '201':
+          description: The created episode.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '413':
+          description: Audio file exceeds the 150 MB maximum.
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /shows/{showId}/episodes/{episodeId}:
+    parameters:
+    - $ref: '#/components/parameters/ShowId'
+    - $ref: '#/components/parameters/EpisodeId'
+    get:
+      operationId: getEpisode
+      tags:
+      - Episodes
+      summary: Get an episode
+      description: Fetches details for a single episode. Path modeled; resource and method confirmed from documentation.
+      responses:
+        '200':
+          description: The requested episode.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    patch:
+      operationId: updateEpisode
+      tags:
+      - Episodes
+      summary: Update an episode
+      description: Updates metadata for an existing episode. Path modeled; resource and method confirmed from documentation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EpisodeUpdate'
+      responses:
+        '200':
+          description: The updated episode.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Episode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    delete:
+      operationId: deleteEpisode
+      tags:
+      - Episodes
+      summary: Delete an episode
+      description: Deletes an episode. Path modeled; resource and method confirmed from documentation.
+      responses:
+        '204':
+          description: The episode was deleted.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  schemas:
+    EpisodeUpdate:
+      type: object
+      description: Mutable episode metadata fields.
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        publishDate:
+          type: string
+          format: date-time
+    Episode:
+      type: object
+      description: An episode belonging to a show.
+      properties:
+        id:
+          type: string
+        showId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        audioUrl:
+          type: string
+          format: uri
+        publishDate:
+          type: string
+          format: date-time
+        durationSeconds:
+          type: integer
+    EpisodeCreate:
+      type: object
+      description: Fields for creating a new episode, including the audio upload.
+      required:
+      - title
+      - audio
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        audio:
+          type: string
+          format: binary
+          description: Audio file, MP3 recommended at 128 kbps, up to 150 MB.
+        publishDate:
+          type: string
+          format: date-time
+  responses:
+    NotFound:
+      description: The requested resource does not exist or is not assigned to this user.
+    Unauthorized:
+      description: Missing or invalid X-API-Key.
+    RateLimited:
+      description: Rate limit exceeded (60 requests/minute).
+  parameters:
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
+    EpisodeId:
+      name: episodeId
+      in: path
+      required: true
+      description: The unique identifier of the episode.
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: User-scoped API key issued by Acast customer success to Ace plan and Creator Network accounts. Sent on every request in the X-API-Key header.
+x-endpointsModeled: true

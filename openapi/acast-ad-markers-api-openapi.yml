@@ -1,0 +1,98 @@
+openapi: 3.0.3
+info:
+  title: Acast Publishing Ad Markers API
+  description: 'The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS. It also supports placing ad markers on episodes for dynamic ad insertion. The API is documented openly at developers.acast.com but is access-gated: you authenticate with an X-API-Key header, and that key is issued by Acast''s customer success team to accounts on the Ace plan or in the Acast Creator Network. API keys are scoped to a user and grant access only to the shows assigned to that user.
+
+
+    x-endpointsModeled: The resources, HTTP methods, base host, authentication header, and rate limit below are confirmed from Acast''s public documentation (developers.acast.com and the Acast Learning Center). The exact URL path templates and JSON schemas are MODELED as conventional REST paths because Acast''s full reference is served behind an interactive viewer that requires credentials. Verify precise paths and payloads against the live developer portal before relying on them in production.'
+  version: '1.0'
+  contact:
+    name: Acast
+    url: https://developers.acast.com/
+servers:
+- url: https://api.acast.com
+  description: Acast Publishing API
+security:
+- apiKeyAuth: []
+tags:
+- name: Ad Markers
+  description: Place or update ad markers on an episode for dynamic ad insertion.
+paths:
+  /shows/{showId}/episodes/{episodeId}/ad-markers:
+    parameters:
+    - $ref: '#/components/parameters/ShowId'
+    - $ref: '#/components/parameters/EpisodeId'
+    patch:
+      operationId: updateAdMarkers
+      tags:
+      - Ad Markers
+      summary: Place or update ad markers
+      description: Sets or updates the ad markers on an episode so dynamic ad insertion knows where to place pre-roll, mid-roll, and post-roll ads. Disabling monetization per episode is not supported through the API. Path modeled; the ad-marker-via-PATCH operation is confirmed from documentation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdMarkers'
+      responses:
+        '200':
+          description: The updated ad markers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdMarkers'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+components:
+  responses:
+    NotFound:
+      description: The requested resource does not exist or is not assigned to this user.
+    Unauthorized:
+      description: Missing or invalid X-API-Key.
+    RateLimited:
+      description: Rate limit exceeded (60 requests/minute).
+  schemas:
+    AdMarkers:
+      type: object
+      description: Ad marker placement for dynamic ad insertion.
+      properties:
+        markers:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - preroll
+                - midroll
+                - postroll
+              offsetSeconds:
+                type: integer
+                description: Position of the ad break, in seconds from the start.
+  parameters:
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
+    EpisodeId:
+      name: episodeId
+      in: path
+      required: true
+      description: The unique identifier of the episode.
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: User-scoped API key issued by Acast customer success to Ace plan and Creator Network accounts. Sent on every request in the X-API-Key header.
+x-endpointsModeled: true
