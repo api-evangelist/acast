@@ -1,0 +1,18 @@
+{
+  "provider": "acast",
+  "sources": [
+    "acast-ad-markers-api-openapi.yml",
+    "acast-episodes-api-openapi.yml",
+    "acast-shows-api-openapi.yml"
+  ],
+  "outputs": [
+    "acast-ad-markers-api-openapi.yml",
+    "acast-episodes-api-openapi.yml",
+    "acast-shows-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
