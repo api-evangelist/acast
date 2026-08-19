@@ -1,0 +1,1572 @@
+{
+  "item": [
+    {
+      "id": "adb68789-cc45-4d70-93cb-41b0794fcdb7",
+      "name": "Episodes",
+      "description": {
+        "content": "Create, read, update, and delete episodes within a show.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42893bdc-e839-40b2-a3ba-711b918767a3",
+          "name": "List episodes for a show",
+          "request": {
+            "name": "List episodes for a show",
+            "description": {
+              "content": "Returns a list of all existing episodes for a show, including each episode's ID. Path modeled; resource and method confirmed from documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":showId",
+                "episodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "showId",
+                  "description": "(Required) The unique identifier of the show."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8c986cd-e165-4677-b008-11297ea463c3",
+              "name": "A list of episodes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"showId\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"audioUrl\": \"http://ArHcwrtNOPObGAIFk.mnhvFNxddGK-nGlz\",\n      \"publishDate\": \"2016-03-08T19:29:27.874Z\",\n      \"durationSeconds\": 1764\n    },\n    {\n      \"id\": \"string\",\n      \"showId\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"audioUrl\": \"http://WYsfNXollyDe.yjdir1PscK0GRRqXiOWbIZ1pcyPpCWU5\",\n      \"publishDate\": \"1994-04-09T02:31:25.804Z\",\n      \"durationSeconds\": 1903\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "295abbe2-cd9c-4062-8cf0-ca4f92825f1e",
+              "name": "Missing or invalid X-API-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2d0a6664-b82a-450b-bb30-54d9162e7493",
+              "name": "Rate limit exceeded (60 requests/minute).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df232f06-fa6c-4ee0-8468-1746ec1c8035",
+          "name": "Create an episode",
+          "request": {
+            "name": "Create an episode",
+            "description": {
+              "content": "Creates a new episode for a show, accepting an audio file upload (MP3 recommended, up to 150 MB) plus episode metadata. Path modeled; resource and method confirmed from documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":showId",
+                "episodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "showId",
+                  "description": "(Required) The unique identifier of the show."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "audio",
+                  "type": "file",
+                  "description": "(Required) Audio file, MP3 recommended at 128 kbps, up to 150 MB."
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "publishDate",
+                  "value": "<dateTime>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e29e9612-029c-404a-ba5e-e9d13a894d18",
+              "name": "The created episode.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Audio file, MP3 recommended at 128 kbps, up to 150 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "publishDate",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"showId\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"audioUrl\": \"https://zZDEKfQvTadkPRbntOUQoercbwlPiHaf.qpstFsmr\",\n  \"publishDate\": \"1969-11-19T20:45:31.794Z\",\n  \"durationSeconds\": 6416\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00a8c304-b596-4ab6-b47c-75498eae4391",
+              "name": "Missing or invalid X-API-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Audio file, MP3 recommended at 128 kbps, up to 150 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "publishDate",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e70035e3-ce9d-4dae-b923-ff572e73e019",
+              "name": "Audio file exceeds the 150 MB maximum.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Audio file, MP3 recommended at 128 kbps, up to 150 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "publishDate",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5471218b-a2a6-422d-88f1-f95d1b5c036f",
+              "name": "Rate limit exceeded (60 requests/minute).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Audio file, MP3 recommended at 128 kbps, up to 150 MB.",
+                        "type": "text/plain"
+                      },
+                      "key": "audio",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "publishDate",
+                      "value": "<dateTime>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57d0e03a-5132-45f5-b347-51adc8f3bc63",
+          "name": "Get an episode",
+          "request": {
+            "name": "Get an episode",
+            "description": {
+              "content": "Fetches details for a single episode. Path modeled; resource and method confirmed from documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":showId",
+                "episodes",
+                ":episodeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "showId",
+                  "description": "(Required) The unique identifier of the show."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "episodeId",
+                  "description": "(Required) The unique identifier of the episode."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e94d2cf-0aaf-4b7a-9bc9-8f0d2558565b",
+              "name": "The requested episode.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"showId\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"audioUrl\": \"https://zZDEKfQvTadkPRbntOUQoercbwlPiHaf.qpstFsmr\",\n  \"publishDate\": \"1969-11-19T20:45:31.794Z\",\n  \"durationSeconds\": 6416\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62954604-6e28-4a10-b20f-018d835f7eae",
+              "name": "Missing or invalid X-API-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a17ffe54-931d-4d45-96bb-e4b3b6995aaa",
+              "name": "The requested resource does not exist or is not assigned to this user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d6ef821-1e66-4dc4-a579-22cc99c89134",
+              "name": "Rate limit exceeded (60 requests/minute).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b214e1a7-c388-463f-98a3-d699ca91d834",
+          "name": "Update an episode",
+          "request": {
+            "name": "Update an episode",
+            "description": {
+              "content": "Updates metadata for an existing episode. Path modeled; resource and method confirmed from documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":showId",
+                "episodes",
+                ":episodeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "showId",
+                  "description": "(Required) The unique identifier of the show."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "episodeId",
+                  "description": "(Required) The unique identifier of the episode."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publishDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d212ce4e-6a98-4475-9d4b-c0a14d1b7dee",
+              "name": "The updated episode.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"showId\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"audioUrl\": \"https://zZDEKfQvTadkPRbntOUQoercbwlPiHaf.qpstFsmr\",\n  \"publishDate\": \"1969-11-19T20:45:31.794Z\",\n  \"durationSeconds\": 6416\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "416e5fd9-a0a7-4f94-9654-8ad1163b8c3d",
+              "name": "Missing or invalid X-API-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06c172fc-1a83-418e-a44e-4e61794a72e7",
+              "name": "The requested resource does not exist or is not assigned to this user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e66dab26-4d4d-47d0-b7a0-799f61f96ccc",
+              "name": "Rate limit exceeded (60 requests/minute).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"publishDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68898916-b1b8-4e4f-af36-273e03eedfad",
+          "name": "Delete an episode",
+          "request": {
+            "name": "Delete an episode",
+            "description": {
+              "content": "Deletes an episode. Path modeled; resource and method confirmed from documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":showId",
+                "episodes",
+                ":episodeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "showId",
+                  "description": "(Required) The unique identifier of the show."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "episodeId",
+                  "description": "(Required) The unique identifier of the episode."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a4a38dd-76c6-4eed-af8f-4be77d03468b",
+              "name": "The episode was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4e119d6-a1ae-4d94-a719-77342bcd94a0",
+              "name": "Missing or invalid X-API-Key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b843c1dc-1e68-47c6-b090-41ed8a6048ba",
+              "name": "The requested resource does not exist or is not assigned to this user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ede5715c-b870-43ce-8b5f-0371344458c9",
+              "name": "Rate limit exceeded (60 requests/minute).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":showId",
+                    "episodes",
+                    ":episodeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "showId",
+                      "description": "(Required) The unique identifier of the show."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "episodeId",
+                      "description": "(Required) The unique identifier of the episode."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.acast.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "908c9fda-bc29-4953-8066-2a303fb4cc42",
+    "name": "Acast Publishing Ad Markers Episodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS. It also supports placing ad markers on episodes for dynamic ad insertion. The API is documented openly at developers.acast.com but is access-gated: you authenticate with an X-API-Key header, and that key is issued by Acast's customer success team to accounts on the Ace plan or in the Acast Creator Network. API keys are scoped to a user and grant access only to the shows assigned to that user.\n\nx-endpointsModeled: The resources, HTTP methods, base host, authentication header, and rate limit below are confirmed from Acast's public documentation (developers.acast.com and the Acast Learning Center). The exact URL path templates and JSON schemas are MODELED as conventional REST paths because Acast's full reference is served behind an interactive viewer that requires credentials. Verify precise paths and payloads against the live developer portal before relying on them in production.\n\nContact Support:\n Name: Acast",
+      "type": "text/plain"
+    }
+  }
+}

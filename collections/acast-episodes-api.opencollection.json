@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Acast Publishing Ad Markers Episodes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List episodes for a show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acast.com/shows/:showId/episodes",
+            "params": [
+              {
+                "name": "showId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the show."
+              }
+            ]
+          },
+          "docs": "Returns a list of all existing episodes for a show, including each episode's ID. Path modeled; resource and method confirmed from documentation."
+        },
+        {
+          "info": {
+            "name": "Create an episode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.acast.com/shows/:showId/episodes",
+            "params": [
+              {
+                "name": "showId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the show."
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Creates a new episode for a show, accepting an audio file upload (MP3 recommended, up to 150 MB) plus episode metadata. Path modeled; resource and method confirmed from documentation."
+        },
+        {
+          "info": {
+            "name": "Get an episode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.acast.com/shows/:showId/episodes/:episodeId",
+            "params": [
+              {
+                "name": "showId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the show."
+              },
+              {
+                "name": "episodeId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the episode."
+              }
+            ]
+          },
+          "docs": "Fetches details for a single episode. Path modeled; resource and method confirmed from documentation."
+        },
+        {
+          "info": {
+            "name": "Update an episode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.acast.com/shows/:showId/episodes/:episodeId",
+            "params": [
+              {
+                "name": "showId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the show."
+              },
+              {
+                "name": "episodeId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the episode."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates metadata for an existing episode. Path modeled; resource and method confirmed from documentation."
+        },
+        {
+          "info": {
+            "name": "Delete an episode",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.acast.com/shows/:showId/episodes/:episodeId",
+            "params": [
+              {
+                "name": "showId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the show."
+              },
+              {
+                "name": "episodeId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the episode."
+              }
+            ]
+          },
+          "docs": "Deletes an episode. Path modeled; resource and method confirmed from documentation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
