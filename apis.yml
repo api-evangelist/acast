@@ -12,6 +12,18 @@ description: Acast is a podcast hosting, distribution, and advertising marketpla
   openly at developers.acast.com, but access is gated - an X-API-Key credential is
   issued by Acast's customer success team to accounts on the Ace plan or in the
   Acast Creator Network.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
