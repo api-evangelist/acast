@@ -1,0 +1,26 @@
+slug: acast
+provider: Acast
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Ad Markers
+  spec_file: acast-ad-markers-api-openapi.yml
+  capability_id: BC-3760.40
+  capability_id_l1: BC-3760
+  capability_name: Ad Trafficking & Operations
+  confidence: 0.8
+  evidence: 'PATCH /shows/{showId}/episodes/{episodeId}/ad-markers  updateAdMarkers  Place or update ad
+    markers; description: "supports placing ad markers on episodes for dynamic ad insertion"'
+  reason: Placing ad markers defines the break structure used for dynamic ad insertion, which is squarely
+    ad trafficking/insertion and break scheduling (BC-3760.40) rather than inventory forecasting or sales.
+    Slight residual ambiguity with BC-3760.10 inventory definition keeps this at 0.8.

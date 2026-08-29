@@ -114,6 +114,9 @@ apis:
   - type: APIReference
     url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
 common:
+- type: CapabilityMap
+  url: capabilities/acast-capability-edges.yml
+  name: Acast Business Capability Map
 - type: AgenticAccess
   url: agentic-access/acast-agentic-access.yml
 - type: VulnerabilityDisclosure
