@@ -1,10 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Acast Publishing Ad Markers Shows API
-  description: 'The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS. It also supports placing ad markers on episodes for dynamic ad insertion. The API is documented openly at developers.acast.com but is access-gated: you authenticate with an X-API-Key header, and that key is issued by Acast''s customer success team to accounts on the Ace plan or in the Acast Creator Network. API keys are scoped to a user and grant access only to the shows assigned to that user.
-
-
-    x-endpointsModeled: The resources, HTTP methods, base host, authentication header, and rate limit below are confirmed from Acast''s public documentation (developers.acast.com and the Acast Learning Center). The exact URL path templates and JSON schemas are MODELED as conventional REST paths because Acast''s full reference is served behind an interactive viewer that requires credentials. Verify precise paths and payloads against the live developer portal before relying on them in production.'
+  title: Acast Publishing Shows API
+  description: The Acast Publishing API lets you programmatically query data about your shows and episodes, and create, update, and delete episodes straight from the command line or an existing CMS.
   version: '1.0'
   contact:
     name: Acast
@@ -64,13 +61,6 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  responses:
-    NotFound:
-      description: The requested resource does not exist or is not assigned to this user.
-    Unauthorized:
-      description: Missing or invalid X-API-Key.
-    RateLimited:
-      description: Rate limit exceeded (60 requests/minute).
   parameters:
     ShowId:
       name: showId
@@ -79,6 +69,13 @@ components:
       description: The unique identifier of the show.
       schema:
         type: string
+  responses:
+    RateLimited:
+      description: Rate limit exceeded (60 requests/minute).
+    NotFound:
+      description: The requested resource does not exist or is not assigned to this user.
+    Unauthorized:
+      description: Missing or invalid X-API-Key.
   schemas:
     Show:
       type: object

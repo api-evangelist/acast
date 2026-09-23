@@ -1,9 +1,7 @@
 {
   "provider": "acast",
   "sources": [
-    "acast-ad-markers-api-openapi.yml",
-    "acast-episodes-api-openapi.yml",
-    "acast-shows-api-openapi.yml"
+    "_original/acast-openapi.yml"
   ],
   "outputs": [
     "acast-ad-markers-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "acast-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "acast-ad-markers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "acast-episodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "acast-shows-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
