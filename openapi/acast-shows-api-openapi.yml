@@ -61,14 +61,6 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
-  parameters:
-    ShowId:
-      name: showId
-      in: path
-      required: true
-      description: The unique identifier of the show.
-      schema:
-        type: string
   responses:
     RateLimited:
       description: Rate limit exceeded (60 requests/minute).
@@ -93,6 +85,14 @@ components:
         imageUrl:
           type: string
           format: uri
+  parameters:
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

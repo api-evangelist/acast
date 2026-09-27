@@ -130,6 +130,35 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   schemas:
+    EpisodeCreate:
+      type: object
+      description: Fields for creating a new episode, including the audio upload.
+      required:
+      - title
+      - audio
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        audio:
+          type: string
+          format: binary
+          description: Audio file, MP3 recommended at 128 kbps, up to 150 MB.
+        publishDate:
+          type: string
+          format: date-time
+    EpisodeUpdate:
+      type: object
+      description: Mutable episode metadata fields.
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        publishDate:
+          type: string
+          format: date-time
     Episode:
       type: object
       description: An episode belonging to a show.
@@ -150,50 +179,6 @@ components:
           format: date-time
         durationSeconds:
           type: integer
-    EpisodeUpdate:
-      type: object
-      description: Mutable episode metadata fields.
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        publishDate:
-          type: string
-          format: date-time
-    EpisodeCreate:
-      type: object
-      description: Fields for creating a new episode, including the audio upload.
-      required:
-      - title
-      - audio
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        audio:
-          type: string
-          format: binary
-          description: Audio file, MP3 recommended at 128 kbps, up to 150 MB.
-        publishDate:
-          type: string
-          format: date-time
-  parameters:
-    ShowId:
-      name: showId
-      in: path
-      required: true
-      description: The unique identifier of the show.
-      schema:
-        type: string
-    EpisodeId:
-      name: episodeId
-      in: path
-      required: true
-      description: The unique identifier of the episode.
-      schema:
-        type: string
   responses:
     RateLimited:
       description: Rate limit exceeded (60 requests/minute).
@@ -201,6 +186,21 @@ components:
       description: The requested resource does not exist or is not assigned to this user.
     Unauthorized:
       description: Missing or invalid X-API-Key.
+  parameters:
+    EpisodeId:
+      name: episodeId
+      in: path
+      required: true
+      description: The unique identifier of the episode.
+      schema:
+        type: string
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
