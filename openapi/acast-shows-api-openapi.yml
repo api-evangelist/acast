@@ -62,12 +62,20 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   responses:
-    RateLimited:
-      description: Rate limit exceeded (60 requests/minute).
     NotFound:
       description: The requested resource does not exist or is not assigned to this user.
+    RateLimited:
+      description: Rate limit exceeded (60 requests/minute).
     Unauthorized:
       description: Missing or invalid X-API-Key.
+  parameters:
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
   schemas:
     Show:
       type: object
@@ -85,14 +93,6 @@ components:
         imageUrl:
           type: string
           format: uri
-  parameters:
-    ShowId:
-      name: showId
-      in: path
-      required: true
-      description: The unique identifier of the show.
-      schema:
-        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
