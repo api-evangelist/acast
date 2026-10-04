@@ -129,6 +129,21 @@ paths:
         '429':
           $ref: '#/components/responses/RateLimited'
 components:
+  parameters:
+    EpisodeId:
+      name: episodeId
+      in: path
+      required: true
+      description: The unique identifier of the episode.
+      schema:
+        type: string
+    ShowId:
+      name: showId
+      in: path
+      required: true
+      description: The unique identifier of the show.
+      schema:
+        type: string
   responses:
     NotFound:
       description: The requested resource does not exist or is not assigned to this user.
@@ -137,24 +152,6 @@ components:
     Unauthorized:
       description: Missing or invalid X-API-Key.
   schemas:
-    EpisodeCreate:
-      type: object
-      description: Fields for creating a new episode, including the audio upload.
-      required:
-      - title
-      - audio
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        audio:
-          type: string
-          format: binary
-          description: Audio file, MP3 recommended at 128 kbps, up to 150 MB.
-        publishDate:
-          type: string
-          format: date-time
     EpisodeUpdate:
       type: object
       description: Mutable episode metadata fields.
@@ -186,21 +183,24 @@ components:
           format: date-time
         durationSeconds:
           type: integer
-  parameters:
-    ShowId:
-      name: showId
-      in: path
-      required: true
-      description: The unique identifier of the show.
-      schema:
-        type: string
-    EpisodeId:
-      name: episodeId
-      in: path
-      required: true
-      description: The unique identifier of the episode.
-      schema:
-        type: string
+    EpisodeCreate:
+      type: object
+      description: Fields for creating a new episode, including the audio upload.
+      required:
+      - title
+      - audio
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        audio:
+          type: string
+          format: binary
+          description: Audio file, MP3 recommended at 128 kbps, up to 150 MB.
+        publishDate:
+          type: string
+          format: date-time
   securitySchemes:
     apiKeyAuth:
       type: apiKey
