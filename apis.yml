@@ -51,7 +51,7 @@ tags:
 - Media
 - Audio
 created: '2026-07-05'
-modified: '2026-07-05'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: acast:acast-webhooks-api
@@ -118,6 +118,8 @@ apis:
   - type: APIReference
     url: https://learn.acast.com/en/articles/5790019-acast-publishing-api
 common:
+- url: https://www.acast.com/en/blog
+  type: Blog
 - type: CapabilityMap
   url: capabilities/acast-capability-edges.yml
   name: Acast Business Capability Map
