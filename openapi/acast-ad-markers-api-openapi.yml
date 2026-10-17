@@ -46,13 +46,6 @@ paths:
           $ref: '#/components/responses/RateLimited'
 components:
   parameters:
-    EpisodeId:
-      name: episodeId
-      in: path
-      required: true
-      description: The unique identifier of the episode.
-      schema:
-        type: string
     ShowId:
       name: showId
       in: path
@@ -60,13 +53,20 @@ components:
       description: The unique identifier of the show.
       schema:
         type: string
+    EpisodeId:
+      name: episodeId
+      in: path
+      required: true
+      description: The unique identifier of the episode.
+      schema:
+        type: string
   responses:
+    Unauthorized:
+      description: Missing or invalid X-API-Key.
     NotFound:
       description: The requested resource does not exist or is not assigned to this user.
     RateLimited:
       description: Rate limit exceeded (60 requests/minute).
-    Unauthorized:
-      description: Missing or invalid X-API-Key.
   schemas:
     AdMarkers:
       type: object
