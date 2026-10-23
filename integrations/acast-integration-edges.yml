@@ -67,6 +67,40 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: podcast hosting
+- partner_name: TAG Registry (Trustworthy Accountability Group)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.tagtoday.net/registry
+  category: Ad fraud / brand safety certification (TAG)
+  contract_reference:
+    register: TAG Registry (tagtoday.net/registry; registry-search public endpoint)
+    spec_file: null
+    standard: TAG certification programs (Trustworthy Accountability Group)
+    role: tag-registered
+    registrations:
+    - registered_name: Acast
+      register_id: https://hubgloo.opxar.com/company/1054296372
+      verified_by_tag: true
+      seals: []
+      matched_domain: acast.com
+      matched_by: domain
+      other_names:
+      - Acast AB
+      - Acast AB d/b/a Acast
+      identity: wikidata Q21183704 'Acast' P856 https://www.acast.com/
+    signal_note: certified_products = one entry per TAG seal held (CAF, BSC, CAM, CAP, CFT), never per registration;
+      validation route (third-party auditor / TAG Validation / self-attestation) and category are context. The registry
+      shows current seals only and marks none expired, so lapsed is false. Verified by TAG with no seal = listing
+      only (participation)
+    detected_by: sweep-tag-certified-ad-fraud.py
+    detected: '2026-10-23'
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-tag-certified-ad-fraud.py
+  first_seen: '2026-10-23'
 generated: '2026-10-21'
 method: searched
 source:
@@ -81,3 +115,7 @@ checked:
 - https://podcastindex.org/api/apps
 - https://raw.githubusercontent.com/Podcastindex-org/podcast-namespace/main/docs/element-support.md
 - https://support.spotify.com/us/creators/article/getting-your-podcast-on-spotify/
+- https://hubgloo.opxar.com/search
+- https://www.tagtoday.net/certifications
+- https://www.tagtoday.net/registry
+- https://www.tagtoday.net/registry-search/
