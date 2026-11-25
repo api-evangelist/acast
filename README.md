@@ -97,6 +97,12 @@ Postman and Open Collection request collections.
 - [Acast Publishing Ad Markers Episodes API](https://apis.io/collections/acast/open-acast-episodes-api/)
 - [Acast Publishing Ad Markers Shows API](https://apis.io/collections/acast/open-acast-shows-api/)
 
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Acast API Rules](https://apis.io/rules/acast/acast-rules/)
+
 #### Security (3)
 
 Authentication, trust centre, and vulnerability disclosure.
@@ -133,18 +139,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 26.9** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 29.3** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 66.1 |
 | Contract quality | 47.1 |
-| Contract governance | 0.0 |
-| Operational transparency | 7.9 |
+| Contract governance | 13.6 |
+| Operational transparency | 16.7 |
 | Developer ergonomics | 31.0 |
-| Access clarity | 7.9 |
+| Access clarity | 6.4 |
 
-**Agent readiness 17.9** — agent-aware
+**Agent readiness 23.9** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -154,7 +160,7 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | MCP Server | — |
 | Auth Clarity | bearer (partial credit) |
 | Idempotency | — |
-| Error Semantics | — |
+| Error Semantics | verified |
 | OpenAPI Examples | — |
 | Rate Limit Signal | derived (partial credit) |
 | Event Surface Described | — |
@@ -167,6 +173,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
 **Regulatory alignment 17.6** — Horizontal (data, software, accessibility, platform)
 
